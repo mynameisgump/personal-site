@@ -1,20 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import Card from "../components/Card.astro";
 ---
 
 <Layout title="Gump.">
   <main>
-    <div>
+    <div class="title">
       <h1><span class="text-gradient">~/etcrann</span></h1>
     </div>
-    <Navigation />
+    <div class="links">
+      <Navigation />
+    </div>
   </main>
 </Layout>
 
 <style>
   main {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "title header links links"
+      "main main . sidebar"
+      "footer footer footer footer";
     margin: auto;
     padding: 1.5rem;
     max-width: 60ch;
@@ -24,39 +32,12 @@ import Card from "../components/Card.astro";
     font-weight: 800;
     margin: 0;
   }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
+  .title {
+    grid-area: title;
   }
-  .instructions {
-    line-height: 1.6;
-    margin: 1rem 0;
-    border: 1px solid rgba(var(--accent), 25%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.4rem;
+  .links {
+    grid-area: links;
   }
-  .instructions code {
-    font-size: 0.875em;
-    font-weight: bold;
-    background: rgba(var(--accent), 12%);
-    color: rgb(var(--accent));
-    border-radius: 4px;
-    padding: 0.3em 0.45em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent));
-  }
-  .link-card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 1rem;
-    padding: 0;
-  }
-
   .nav-links {
     width: 100%;
     top: 5rem;
